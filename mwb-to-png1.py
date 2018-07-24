@@ -9,7 +9,7 @@ import shutil
 directory = sys.argv[1]
 
 for element in os.listdir(directory):
-    if (element.endswith('.mwb') and os.path.isfile(directory + element[0:-4] + '.png') == False):
+    if element.endswith('.mwb'):
       shutil.copyfile(directory + element, 'temp.mwb')
       os.system('/usr/bin/mysql-workbench --run-script mwb-to-png2.py')
       with Image(filename = 'temp.pdf[0]', resolution = 300) as img:

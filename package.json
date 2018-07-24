@@ -8,7 +8,7 @@
     "pre-commit": "^1.2.2"
   },
   "scripts": {
-    "mwb-to-png": "python mwb-to-png1.py '/home/kimoce/test/fichier-mwb/'"
+    "mwb-to-png": "python mwb-to-png1.py '/home/kimoce/test/fichier-mwb/' ./build/preview/"
   },
   "pre-commit": [
     "mwb-to-png"
