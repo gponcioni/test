@@ -14,6 +14,6 @@ for element in os.listdir(directory):
       os.system('/usr/bin/mysql-workbench --run-script mwb-to-png2.py')
       with Image(filename = 'temp.pdf[0]', resolution = 300) as img:
           img.save(filename = directory + element[0:-4] + '.png')
+      os.system('git add ' + directory + element[0:-4] + '.png')
       os.remove('temp.mwb')
       os.remove('temp.pdf')
-      os.system('git add ' + directory + element[0:-4] + '.png')
