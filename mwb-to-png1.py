@@ -9,7 +9,8 @@ import shutil
 directory = sys.argv[1]
 if len(sys.argv) == 3:
     buildDirectory = sys.argv[2]
-    os.makedirs(buildDirectory)
+    if os.path.exists(buildDirectory) == False:
+        os.makedirs(buildDirectory)
 else :
     buildDirectory = directory
 
