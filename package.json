@@ -11,6 +11,6 @@
     "mwb-to-png": "python mwb-to-png1.py '/home/kimoce/test/fichier-mwb/'"
   },
   "pre-commit": [
-    "mwb-to-png"
+    
   ]
 }
