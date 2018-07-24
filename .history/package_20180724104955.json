@@ -1,0 +1,12 @@
+{
+  "name": "test",
+  "description": "test",
+  "version": "1.0.0",
+  "author": "Guillaume Poncioni <gponcioni@kimoce.com>",
+  "dependencies": {},
+  "devDependencies": {
+  },
+  "scripts": {
+    "mwb-to-png": "python mwb-to-png1.py './'"
+  }
+}
