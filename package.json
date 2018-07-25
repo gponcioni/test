@@ -3,7 +3,9 @@
   "description": "test",
   "version": "1.0.0",
   "author": "Guillaume Poncioni <gponcioni@kimoce.com>",
-  "dependencies": {},
+  "dependencies": {
+    "fs-extra": "^7.0.0"
+  },
   "devDependencies": {
     "handlebars": "^4.0.11",
     "klaw-sync": "^4.0.0",
@@ -11,9 +13,11 @@
   },
   "scripts": {
     "mwb2png": "python ./.builder/mwb2png.py './models/' './build/preview/'",
-    "mwb2sql": "python ./.builder/mwb2sql.py './models/' './build/script/'"
+    "mwb2sql": "python ./.builder/mwb2sql.py './models/' './build/script/'",
+    "cleanBuild": "node ./.builder/cleanBuild"
   },
   "pre-commit": [
+    "cleanBuild",
     "mwb2png",
     "mwb2sql"
   ]
