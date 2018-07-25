@@ -23,12 +23,20 @@ def mwb2png():
     os.system('git add ' + outputPath + 'png')
     os.remove(outputPath + 'pdf')
 
+def rewriteREADME():
+  pngLinks = '--- Start model preview ---\n'
+  for element in os.listdir(os.environ['OUTPUT']):
+    if element.endswith('.png'):
+      pngLinks += '!['+element[:-4]+']('+os.environ['OUTPUT']+element+')\n'
+  pngLinks += '--- End model preview ---'
+  print pngLinks
+
 for element in os.listdir(directory):
     if element.endswith('.mwb'):
       os.environ['FILENAME']=element
       mwb2png()
 
-
+rewriteREADME()
 
 
 

@@ -2,4 +2,4 @@
 aller stp
 et maintenant
 
-[img]
+![img](./build/preview/test.png)
