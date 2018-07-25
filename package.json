@@ -5,6 +5,8 @@
   "author": "Guillaume Poncioni <gponcioni@kimoce.com>",
   "dependencies": {},
   "devDependencies": {
+    "handlebars": "^4.0.11",
+    "klaw-sync": "^4.0.0",
     "pre-commit": "^1.2.2"
   },
   "scripts": {
