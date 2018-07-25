@@ -8,9 +8,11 @@
     "pre-commit": "^1.2.2"
   },
   "scripts": {
-    "mwb-to-png": "python mwb-to-png1.py '/home/kimoce/test//models/' './build/preview/'"
+    "mwb2png": "python mwb2png.py '/home/kimoce/test/models/' './build/preview/'",
+    "mwb2sql": "python mwb2sql.py '/home/kimoce/test/models/' './build/script/'"
   },
   "pre-commit": [
-    "mwb-to-png"
+    "mwb2png",
+    "mwb2sql"
   ]
 }
