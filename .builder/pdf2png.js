@@ -1,4 +1,4 @@
-const PDFImage = require("pdf-image").PDFImage;
+var pdf2image = require('pdf2image');
 const klawSync = require('klaw-sync');
 const fs = require('fs-extra');
 const Jimp = require('jimp');
@@ -7,18 +7,19 @@ const previewPath = './build/preview';
 const paths = klawSync(previewPath);
 
 for(let i = 0; i < paths.length; i++) {
-  const path = paths[i].path;
-  const img = new PDFImage(path, {
-    convertOptions: {
-      "-resize": "2000x2000",
-      "-quality": "100"
-    }
-  });
-  img.convertPage(0).then(function (imagePath) {
-    fs.unlinkSync(path);
-    Jimp.read(imagePath, function (err, image) {
+  const pdfPath = paths[i].path;
+  pdf2image.convertPDF(pdfPath,{
+    density : 200,
+    quality : 100,
+    outputFormat : pdfPath.replace('.pdf', ''),
+    outputType : 'png',
+    pages : '1'
+  }).then(pageList => {
+    const pngPath = pageList[0].path;
+    fs.unlinkSync(pngPath.replace('.png', '.pdf'));
+    Jimp.read(pngPath, function (err, image) {
         return crop(image)
-          .write(imagePath);
+          .write(pngPath);
     });
   });
 }
