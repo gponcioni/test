@@ -10,6 +10,7 @@ for(let i = 0; i < paths.length; i++) {
   const path = paths[i].path;
   const img = new PDFImage(path, {
     convertOptions: {
+      "-resize": "2000*2000",
       "-quality": "100"
     }
   });
