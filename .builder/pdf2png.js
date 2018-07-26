@@ -10,7 +10,7 @@ for(let i = 0; i < paths.length; i++) {
   const path = paths[i].path;
   const img = new PDFImage(path, {
     convertOptions: {
-      "-quality": "300"
+      "-quality": "100"
     }
   });
   img.convertPage(0).then(function (imagePath) {
