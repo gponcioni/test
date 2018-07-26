@@ -2,7 +2,7 @@
 -- MySQL Workbench Migration
 -- Migrated Schemata: mydb, mydb2
 -- Source Schemata: , 
--- Created: Thu Jul 26 16:00:15 2018
+-- Created: Thu Jul 26 16:02:36 2018
 -- Workbench Version: 6.3.10
 -- ----------------------------------------------------------------------------
 

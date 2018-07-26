@@ -18,13 +18,13 @@
     "mwb2png": "python ./.builder/mwb2pdf.py './models/' './build/preview/' && node ./.builder/pdf2png",
     "mwb2sql": "python ./.builder/mwb2sql.py './models/' './build/script/'",
     "buildReadme": "node ./.builder/hbs_compiler.js",
-    "addBuild2Commit": "git add ./build"
+    "commitRebuild": "git add ./build && git add README.md"
   },
   "pre-commit": [
     "cleanBuild",
     "mwb2png",
     "mwb2sql",
     "buildReadme",
-    "addBuild2Commit"
+    "commitRebuild"
   ]
 }
