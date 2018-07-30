@@ -45,6 +45,7 @@ new Promise((resolve, reject) => {
 
 
 function build(i, resolve) {
+  modelsLeft--;
   const mwbPath = paths[i].path;
   const fileName = path.basename(mwbPath).replace('.mwb', '');
   const tempMwbPath = path.join(tempPath, fileName) + '.mwb';
@@ -72,13 +73,19 @@ function build(i, resolve) {
         process.env.ALTERPATH = path.join(alterPath, fileName) + '.sql';
         process.env.PNGPATH = path.join(previewPath, fileName) + '.png';
         shell.exec(mwbExec);
-        modelsLeft--;
+        
         if (modelsLeft === 0) {
           resolve();
         } else {
           build(i + 1, resolve);
         }
       });
+    } else {
+      if (modelsLeft === 0) {
+        resolve();
+      } else {
+        build(i + 1, resolve);
+      }
     }
   });
 }
