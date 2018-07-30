@@ -11,9 +11,9 @@ if (process.env.MYSQLWORKBENCH) {
 }
 
 // create the command line to open mysql Workbench and run the python script
-const pythonScript = "\"import grt;import os;from grt.modules import DbMySQLFE as fe;grt.modules.Workbench.openModel(os.environ['MWBPATH']);c = grt.root.wb.doc.physicalModels[0].catalog;fe.generateSQLCreateStatements(c, c.version, {});fe.createScriptForCatalogObjects(os.environ['SQLPATH'], c, {});diagram = grt.root.wb.doc.physicalModels[0].diagrams[0];grt.modules.WbPrinting.printToPDFFile(diagram, os.environ['PNGPATH']);grt.modules.Workbench.exportPNG(os.environ['PNGPATH']);grt.modules.Workbench.exit()\""
+const pythonScript = "\"import grt;import os;import time;from grt.modules import DbMySQLFE as fe;grt.modules.Workbench.openModel(os.environ['MWBPATH']);c = grt.root.wb.doc.physicalModels[0].catalog;fe.generateSQLCreateStatements(c, c.version, {});fe.createScriptForCatalogObjects(os.environ['SQLPATH'], c, {});time.sleep(1);grt.modules.Workbench.exportPNG(os.environ['PNGPATH']);grt.modules.Workbench.exit()\""
 if (process.platform === 'win32') {
-  mwbExec = mwbExec || 'C:\\Program Files (x86)\\MySQL\\MySQL Workbench 6.3 CE\\MySQLWorkbench.exe';
+  mwbExec = mwbExec || '\"C:\\Program Files (x86)\\MySQL\\MySQL Workbench 6.3 CE\\MySQLWorkbench.exe\"';
   mwbExec += ' -run-python ' + pythonScript;
 } else if (process.platform === 'linux') {
   mwbExec = mwbExec || '/usr/bin/mysql-workbench';
@@ -34,7 +34,7 @@ shell.mkdir('-p', previewPath);
 shell.mkdir('-p', scriptPath);
 shell.mkdir('-p', alterPath);
 
-const paths = klawSync(modelsPath);
+const paths = klawSync(modelsPath).filter(f => f.path.endsWith('.mwb'));;
 let modelsLeft = paths.length;
 new Promise((resolve, reject) => {
   build(0, resolve);
