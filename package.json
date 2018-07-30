@@ -3,29 +3,26 @@
   "description": "test",
   "version": "1.0.0",
   "author": "Guillaume Poncioni <gponcioni@kimoce.com>",
-  "dependencies": {
-    "fs-extra": "^7.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "file-zip": "^1.0.1",
+    "fs-extra": "^7.0.0",
     "handlebars": "^4.0.11",
-    "jimp": "^0.2.28",
     "klaw-sync": "^4.0.0",
-    "pdf2image": "^1.2.3",
     "pre-commit": "^1.2.2",
+    "replace-in-file": "^3.4.0",
     "shelljs": "^0.8.2"
   },
   "scripts": {
-    "cleanBuild": "node ./.builder/cleanBuild",
-    "mwb2png": "node ./.builder/mwb2png.js ./models ./build/preview",
-    "mwb2sql": "node ./.builder/mwb2sql.js ./models ./build/script",
-    "buildReadme": "node ./.builder/hbs_compiler.js",
-    "commitRebuild": "git add ./build && git add README.md"
+    "build": "node ./.script/nodejs/build",
+    "cleanBuild": "node ./.script/nodejs/cleanBuild",
+    "buildReadme": "node ./.script/nodejs/hbs_compiler.js",
+    "commitBuild": "git add ./build && git add README.md"
   },
   "pre-commit": [
     "cleanBuild",
-    "mwb2png",
-    "mwb2sql",
+    "build",
     "buildReadme",
-    "commitRebuild"
+    "commitBuild"
   ]
 }

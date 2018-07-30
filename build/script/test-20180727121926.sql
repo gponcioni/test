@@ -2,7 +2,7 @@
 -- MySQL Workbench Migration
 -- Migrated Schemata: mydb, mydb2
 -- Source Schemata: mydb, mydb2
--- Created: Thu Jul 26 17:58:10 2018
+-- Created: Mon Jul 30 11:38:55 2018
 -- Workbench Version: 6.3.10
 -- ----------------------------------------------------------------------------
 
@@ -95,6 +95,13 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`table2` (
   `idtable2` INT NOT NULL,
   PRIMARY KEY (`idtable2`))
+ENGINE = InnoDB;
+
+-- ----------------------------------------------------------------------------
+-- Table mydb.table3
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`table3` (
+)
 ENGINE = InnoDB;
 
 -- ----------------------------------------------------------------------------
