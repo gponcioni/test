@@ -20,7 +20,6 @@
     "commitBuild": "git add ./build && git add README.md"
   },
   "pre-commit": [
-    "cleanBuild",
     "build",
     "buildReadme",
     "commitBuild"
