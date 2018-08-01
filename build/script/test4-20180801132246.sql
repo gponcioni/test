@@ -2,7 +2,7 @@
 -- MySQL Workbench Migration
 -- Migrated Schemata: mydb, mydb2
 -- Source Schemata: , 
--- Created: Mon Jul 30 14:29:07 2018
+-- Created: Wed Aug  1 15:31:17 2018
 -- Workbench Version: 6.3.10
 -- ----------------------------------------------------------------------------
 
@@ -58,13 +58,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`bureaus` (
   `room` VARCHAR(45) NULL COMMENT 'Comment for the room field. This comment will be used for the field in the doctrine class and long lines will wrap with the correct indentation.\n\nNew Lines are supported as well.',
   `foo_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `testIndex` (`room` ASC),
-  INDEX `fk_bureaus_foo1_idx` (`foo_id` ASC),
-  CONSTRAINT `fk_bureaus_foo1`
-    FOREIGN KEY (`foo_id`)
-    REFERENCES `mydb`.`foo` (`id`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE)
+  UNIQUE INDEX `testIndex` (`room` ASC))
 ENGINE = InnoDB
 COMMENT = 'This is a long comment for the bureaus table. It will appear' /* comment truncated */ /*in the doctrine class and long lines will be wrapped.
 
@@ -90,15 +84,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`users_bureaus` (
     REFERENCES `mydb`.`bureaus` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB
-COMMENT = '{MwbExporter:category}mycategory{/MwbExporter:category}';
-
--- ----------------------------------------------------------------------------
--- Table mydb.foo
--- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`foo` (
-  `id` INT NOT NULL,
-  PRIMARY KEY (`id`))
 ENGINE = InnoDB
 COMMENT = '{MwbExporter:category}mycategory{/MwbExporter:category}';
 

@@ -1,8 +1,8 @@
 -- ----------------------------------------------------------------------------
 -- MySQL Workbench Migration
 -- Migrated Schemata: mydb, mydb2
--- Source Schemata: mydb, mydb2
--- Created: Mon Jul 30 14:29:02 2018
+-- Source Schemata: , 
+-- Created: Wed Aug  1 15:31:17 2018
 -- Workbench Version: 6.3.10
 -- ----------------------------------------------------------------------------
 
@@ -30,6 +30,26 @@ COMMENT = '{MwbExporter:category}mycategory{/MwbExporter:category}\n{d:a' /* com
 {/d:actAs}*/;
 
 -- ----------------------------------------------------------------------------
+-- Table mydb.emails
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`emails` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(255) NULL,
+  `users_id` INT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_Emails_Users_idx` (`users_id` ASC),
+  CONSTRAINT `fk_Emails_Users`
+    FOREIGN KEY (`users_id`)
+    REFERENCES `mydb`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+COMMENT = '{MwbExporter:category}mycategory{/MwbExporter:category}\n{doc' /* comment truncated */ /*trine:actAs}
+  actAs:
+    timestampable:
+{/doctrine:actAs}*/;
+
+-- ----------------------------------------------------------------------------
 -- Table mydb.bureaus
 -- ----------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`bureaus` (
@@ -38,13 +58,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`bureaus` (
   `room` VARCHAR(45) NULL COMMENT 'Comment for the room field. This comment will be used for the field in the doctrine class and long lines will wrap with the correct indentation.\n\nNew Lines are supported as well.',
   `foo_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `testIndex` (`room` ASC),
-  INDEX `fk_bureaus_foo1_idx` (`foo_id` ASC),
-  CONSTRAINT `fk_bureaus_foo1`
-    FOREIGN KEY (`foo_id`)
-    REFERENCES `mydb`.`foo` (`id`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE)
+  UNIQUE INDEX `testIndex` (`room` ASC))
 ENGINE = InnoDB
 COMMENT = 'This is a long comment for the bureaus table. It will appear' /* comment truncated */ /*in the doctrine class and long lines will be wrapped.
 
@@ -72,37 +86,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`users_bureaus` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 COMMENT = '{MwbExporter:category}mycategory{/MwbExporter:category}';
-
--- ----------------------------------------------------------------------------
--- Table mydb.foo
--- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`foo` (
-  `id` INT NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-COMMENT = '{MwbExporter:category}mycategory{/MwbExporter:category}';
-
--- ----------------------------------------------------------------------------
--- Table mydb.table1
--- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`table1` (
-)
-ENGINE = InnoDB;
-
--- ----------------------------------------------------------------------------
--- Table mydb.table2
--- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`table2` (
-  `idtable2` INT NOT NULL,
-  PRIMARY KEY (`idtable2`))
-ENGINE = InnoDB;
-
--- ----------------------------------------------------------------------------
--- Table mydb.table3
--- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`table3` (
-)
-ENGINE = InnoDB;
 
 -- ----------------------------------------------------------------------------
 -- Schema mydb2
