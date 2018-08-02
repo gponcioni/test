@@ -1,0 +1,27 @@
+-- MySQL Workbench Synchronization
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
+
+CREATE TABLE IF NOT EXISTS `mydb`.`table1` (
+  `idtable1` INT(11) NOT NULL,
+  PRIMARY KEY (`idtable1`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+ALTER TABLE `mydb`.`users_bureaus` 
+ADD COLUMN `table1_idtable1` INT(11) NOT NULL AFTER `bureaus_id`,
+ADD INDEX `fk_users_bureaus_table11_idx` (`table1_idtable1` ASC);
+
+ALTER TABLE `mydb`.`users_bureaus` 
+ADD CONSTRAINT `fk_users_bureaus_table11`
+  FOREIGN KEY (`table1_idtable1`)
+  REFERENCES `mydb`.`table1` (`idtable1`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

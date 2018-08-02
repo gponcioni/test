@@ -1,8 +1,8 @@
 -- ----------------------------------------------------------------------------
 -- MySQL Workbench Migration
 -- Migrated Schemata: mydb, mydb2
--- Source Schemata: , 
--- Created: Wed Aug  1 15:31:12 2018
+-- Source Schemata: mydb, mydb2
+-- Created: Thu Aug  2 11:26:11 2018
 -- Workbench Version: 6.3.10
 -- ----------------------------------------------------------------------------
 
@@ -28,26 +28,6 @@ COMMENT = '{MwbExporter:category}mycategory{/MwbExporter:category}\n{d:a' /* com
   actAs:
     timestampable:
 {/d:actAs}*/;
-
--- ----------------------------------------------------------------------------
--- Table mydb.emails
--- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`emails` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `email` VARCHAR(255) NULL,
-  `users_id` INT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_Emails_Users_idx` (`users_id` ASC),
-  CONSTRAINT `fk_Emails_Users`
-    FOREIGN KEY (`users_id`)
-    REFERENCES `mydb`.`users` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-COMMENT = '{MwbExporter:category}mycategory{/MwbExporter:category}\n{doc' /* comment truncated */ /*trine:actAs}
-  actAs:
-    timestampable:
-{/doctrine:actAs}*/;
 
 -- ----------------------------------------------------------------------------
 -- Table mydb.bureaus
@@ -101,6 +81,14 @@ CREATE TABLE IF NOT EXISTS `mydb`.`foo` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 COMMENT = '{MwbExporter:category}mycategory{/MwbExporter:category}';
+
+-- ----------------------------------------------------------------------------
+-- Table mydb.table2
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`table2` (
+  `idtable2` INT NOT NULL,
+  PRIMARY KEY (`idtable2`))
+ENGINE = InnoDB;
 
 -- ----------------------------------------------------------------------------
 -- Schema mydb2

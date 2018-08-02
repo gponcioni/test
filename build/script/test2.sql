@@ -2,7 +2,7 @@
 -- MySQL Workbench Migration
 -- Migrated Schemata: mydb, mydb2
 -- Source Schemata: , 
--- Created: Wed Aug  1 15:31:08 2018
+-- Created: Thu Aug  2 10:56:11 2018
 -- Workbench Version: 6.3.10
 -- ----------------------------------------------------------------------------
 
@@ -37,15 +37,30 @@ Multiple lines can be entered as well.
 CREATE TABLE IF NOT EXISTS `mydb`.`users_bureaus` (
   `users_id` INT NOT NULL,
   `bureaus_id` INT NOT NULL,
+  `table1_idtable1` INT NOT NULL,
   PRIMARY KEY (`users_id`, `bureaus_id`),
   INDEX `fk_users_bureaus_bureaus1_idx` (`bureaus_id` ASC),
+  INDEX `fk_users_bureaus_table11_idx` (`table1_idtable1` ASC),
   CONSTRAINT `fk_users_bureaus_bureaus1`
     FOREIGN KEY (`bureaus_id`)
     REFERENCES `mydb`.`bureaus` (`id`)
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_users_bureaus_table11`
+    FOREIGN KEY (`table1_idtable1`)
+    REFERENCES `mydb`.`table1` (`idtable1`)
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 COMMENT = '{MwbExporter:category}mycategory{/MwbExporter:category}';
+
+-- ----------------------------------------------------------------------------
+-- Table mydb.table1
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`table1` (
+  `idtable1` INT NOT NULL,
+  PRIMARY KEY (`idtable1`))
+ENGINE = InnoDB;
 
 -- ----------------------------------------------------------------------------
 -- Schema mydb2

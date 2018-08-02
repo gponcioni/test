@@ -2,7 +2,7 @@
 -- MySQL Workbench Migration
 -- Migrated Schemata: mydb, mydb2
 -- Source Schemata: , 
--- Created: Wed Aug  1 15:31:17 2018
+-- Created: Thu Aug  2 11:06:16 2018
 -- Workbench Version: 6.3.10
 -- ----------------------------------------------------------------------------
 
@@ -22,32 +22,19 @@ CREATE TABLE IF NOT EXISTS `mydb`.`users` (
   `name` VARCHAR(255) NULL,
   `email` VARCHAR(50) NULL,
   `created_at` TIMESTAMP NULL,
-  PRIMARY KEY (`id`))
+  `table1_idtable1` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_users_table11_idx` (`table1_idtable1` ASC),
+  CONSTRAINT `fk_users_table11`
+    FOREIGN KEY (`table1_idtable1`)
+    REFERENCES `mydb`.`table1` (`idtable1`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 COMMENT = '{MwbExporter:category}mycategory{/MwbExporter:category}\n{d:a' /* comment truncated */ /*ctAs}
   actAs:
     timestampable:
 {/d:actAs}*/;
-
--- ----------------------------------------------------------------------------
--- Table mydb.emails
--- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`emails` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `email` VARCHAR(255) NULL,
-  `users_id` INT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_Emails_Users_idx` (`users_id` ASC),
-  CONSTRAINT `fk_Emails_Users`
-    FOREIGN KEY (`users_id`)
-    REFERENCES `mydb`.`users` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-COMMENT = '{MwbExporter:category}mycategory{/MwbExporter:category}\n{doc' /* comment truncated */ /*trine:actAs}
-  actAs:
-    timestampable:
-{/doctrine:actAs}*/;
 
 -- ----------------------------------------------------------------------------
 -- Table mydb.bureaus
@@ -86,6 +73,14 @@ CREATE TABLE IF NOT EXISTS `mydb`.`users_bureaus` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 COMMENT = '{MwbExporter:category}mycategory{/MwbExporter:category}';
+
+-- ----------------------------------------------------------------------------
+-- Table mydb.table1
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`table1` (
+  `idtable1` INT NOT NULL,
+  PRIMARY KEY (`idtable1`))
+ENGINE = InnoDB;
 
 -- ----------------------------------------------------------------------------
 -- Schema mydb2

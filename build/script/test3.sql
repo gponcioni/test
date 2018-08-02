@@ -2,7 +2,7 @@
 -- MySQL Workbench Migration
 -- Migrated Schemata: mydb, mydb2
 -- Source Schemata: , 
--- Created: Wed Aug  1 15:33:31 2018
+-- Created: Thu Aug  2 11:06:08 2018
 -- Workbench Version: 6.3.10
 -- ----------------------------------------------------------------------------
 
@@ -22,7 +22,14 @@ CREATE TABLE IF NOT EXISTS `mydb`.`users` (
   `name` VARCHAR(255) NULL,
   `email` VARCHAR(50) NULL,
   `created_at` TIMESTAMP NULL,
-  PRIMARY KEY (`id`))
+  `table1_idtable1` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_users_table11_idx` (`table1_idtable1` ASC),
+  CONSTRAINT `fk_users_table11`
+    FOREIGN KEY (`table1_idtable1`)
+    REFERENCES `mydb`.`table1` (`idtable1`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 COMMENT = '{MwbExporter:category}mycategory{/MwbExporter:category}\n{d:a' /* comment truncated */ /*ctAs}
   actAs:
@@ -37,14 +44,15 @@ CREATE TABLE IF NOT EXISTS `mydb`.`bureaus` (
   `name` VARCHAR(50) NULL,
   `room` VARCHAR(45) NULL COMMENT 'Comment for the room field. This comment will be used for the field in the doctrine class and long lines will wrap with the correct indentation.\n\nNew Lines are supported as well.',
   `foo_id` INT NOT NULL,
+  `table1_copy1_idtable1` INT NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `testIndex` (`room` ASC),
-  INDEX `fk_bureaus_foo1_idx` (`foo_id` ASC),
-  CONSTRAINT `fk_bureaus_foo1`
-    FOREIGN KEY (`foo_id`)
-    REFERENCES `mydb`.`foo` (`id`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE)
+  INDEX `fk_bureaus_table1_copy11_idx` (`table1_copy1_idtable1` ASC),
+  CONSTRAINT `fk_bureaus_table1_copy11`
+    FOREIGN KEY (`table1_copy1_idtable1`)
+    REFERENCES `mydb`.`table1_copy1` (`idtable1`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 COMMENT = 'This is a long comment for the bureaus table. It will appear' /* comment truncated */ /*in the doctrine class and long lines will be wrapped.
 
@@ -74,13 +82,23 @@ ENGINE = InnoDB
 COMMENT = '{MwbExporter:category}mycategory{/MwbExporter:category}';
 
 -- ----------------------------------------------------------------------------
--- Table mydb.foo
+-- Table mydb.table1
 -- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`foo` (
-  `id` INT NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-COMMENT = '{MwbExporter:category}mycategory{/MwbExporter:category}';
+CREATE TABLE IF NOT EXISTS `mydb`.`table1` (
+  `idtable1` INT NOT NULL,
+  `table1col` VARCHAR(45) NULL,
+  `table1col1` INT NULL,
+  PRIMARY KEY (`idtable1`))
+ENGINE = InnoDB;
+
+-- ----------------------------------------------------------------------------
+-- Table mydb.table1_copy1
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`table1_copy1` (
+  `idtable1` INT NOT NULL,
+  `table1col` VARCHAR(45) NULL,
+  PRIMARY KEY (`idtable1`))
+ENGINE = InnoDB;
 
 -- ----------------------------------------------------------------------------
 -- Schema mydb2

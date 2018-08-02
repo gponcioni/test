@@ -1,6 +1,0 @@
-ER_PARSE_ERROR:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') ENGINE = InnoDB' at line 1
- SQL :      CREATE TABLE IF NOT EXISTS `mydb`.`table1` ( ) ENGINE = InnoDB
-
-ER_PARSE_ERROR:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') ENGINE = InnoDB' at line 1
- SQL :      CREATE TABLE IF NOT EXISTS `mydb`.`table3` ( ) ENGINE = InnoDB
-

@@ -2,7 +2,7 @@
 -- MySQL Workbench Migration
 -- Migrated Schemata: mydb, mydb2
 -- Source Schemata: mydb, mydb2
--- Created: Wed Aug  1 15:33:27 2018
+-- Created: Thu Aug  2 11:26:11 2018
 -- Workbench Version: 6.3.10
 -- ----------------------------------------------------------------------------
 
@@ -83,25 +83,11 @@ ENGINE = InnoDB
 COMMENT = '{MwbExporter:category}mycategory{/MwbExporter:category}';
 
 -- ----------------------------------------------------------------------------
--- Table mydb.table1
--- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`table1` (
-)
-ENGINE = InnoDB;
-
--- ----------------------------------------------------------------------------
 -- Table mydb.table2
 -- ----------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`table2` (
   `idtable2` INT NOT NULL,
   PRIMARY KEY (`idtable2`))
-ENGINE = InnoDB;
-
--- ----------------------------------------------------------------------------
--- Table mydb.table3
--- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`table3` (
-)
 ENGINE = InnoDB;
 
 -- ----------------------------------------------------------------------------
