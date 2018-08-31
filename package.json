@@ -12,10 +12,15 @@
     "mysql": "^2.16.0",
     "pre-commit": "^1.2.2",
     "replace-in-file": "^3.4.0",
-    "shelljs": "^0.8.2"
+    "sequelize-auto": "^0.4.29",
+    "shelljs": "^0.8.2",
+    "ts-node": "^7.0.1",
+    "ts-sequelize": "^1.0.2",
+    "typeorm": "^0.2.7",
+    "typeorm-model-generator": "0.2.19"
   },
   "scripts": {
-    "build": "node ./.script/nodejs/build",
+    "build": "node ./.script/nodejs/build -u",
     "cleanBuild": "node ./.script/nodejs/cleanBuild",
     "buildReadme": "node ./.script/nodejs/hbs_compiler.js",
     "commitBuild": "git add ./build && git add README.md"

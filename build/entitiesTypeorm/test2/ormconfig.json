@@ -1,0 +1,1 @@
+[{"type":"sqlite","database":"mydb","synchronize":false,"entities":["entities/*.ts"]}]

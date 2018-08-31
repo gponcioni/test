@@ -1,3 +1,0 @@
-ER_WRONG_COLUMN_NAME:Incorrect column name ''
- SQL :      CREATE TABLE IF NOT EXISTS `mydb`.`table1` (   `` INT NULL) ENGINE = InnoDB
-
